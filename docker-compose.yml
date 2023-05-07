@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  mariadb:
+    container_name: mariadb_container
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass123
+      - MYSQL_DATABASE=mydb
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+      
+  postgres:
+    container_name: postgres_container
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypass
+      - POSTGRES_DB=mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  mysql:
+    container_name: mysql_container
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass123
+      - MYSQL_DATABASE=mydb
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+
+volumes:
+  mariadb_data:
+  postgres_data:
+  mysql_data:
